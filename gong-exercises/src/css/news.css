@@ -1,0 +1,106 @@
+.news-feed-wrapper .header,
+.news-feed-wrapper .feed-item {
+  max-width: 48em;
+}
+.news-feed-wrapper .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #E6ECF0;
+}
+.news-feed-wrapper .header-icon img {
+  width: 40px;
+}
+.news-feed-wrapper .header .header-text,
+.news-feed-wrapper .header .header-icon {
+  padding: 0.6em;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.news-feed-wrapper .feed-item {
+  display: flex;
+  direction: row;
+  padding: 6px;
+  border-bottom: 1px solid #E6ECF0;
+}
+.news-feed-wrapper .feed-item .img-col img {
+  width: 50px;
+  border-radius: 50%;
+}
+.news-feed-wrapper .feed-item .story-col {
+  padding: 10px;
+}
+.news-feed-wrapper .feed-item .story-col .text-area textarea {
+  height: 3em;
+  border: 0px transparent;
+  font-size: 1.5em;
+  color: #96A3AE;
+  width: 100%;
+}
+.news-feed-wrapper .feed-item .story-col .text-area textarea:hover,
+.news-feed-wrapper .feed-item .story-col .text-area textarea:focus {
+  color: black;
+}
+.news-feed-wrapper .profile {
+  border-bottom: 8px solid #E6ECF0;
+}
+.news-feed-wrapper .icon-e img {
+  width: 1.6em;
+  border-radius: 50%;
+}
+.news-feed-wrapper .feed-item-footer .icon-e img {
+  width: 14px;
+}
+.news-feed-wrapper .feed-item-footer .icon-e.liked img {
+  font-size: 0.7em;
+  /*filter: invert(95%) sepia(100%) saturate(5%) hue-rotate(-70deg) brightness(50%) contrast(93%); */
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+  fill: red;
+}
+
+.news-feed-wrapper .story-col {
+  width: 100%;
+}
+.news-feed-wrapper .story-col .top-title-right {
+  cursor: pointer;
+  font-weight: 600;
+  color: red;
+}
+.news-feed-wrapper .story-col .top-title-right {
+  float: right;
+}
+.news-feed-wrapper .story-col .top-title .name {
+  font-weight: bold;
+}
+.news-feed-wrapper .story-col .top-title .more {
+  color: #626262;
+  font-size: 0.8em;
+}
+.news-feed-wrapper .story-col .feed-item-profile,
+.news-feed-wrapper .story-col .icone-list {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+}
+.news-feed-wrapper .story-col .description {
+  padding: 10px 0 10px 3px;
+}
+.news-feed-wrapper .story-col .icone-list {
+  justify-content: space-evenly;
+}
+.news-feed-wrapper .story-col .feed-item-footer {
+  justify-content: space-between;
+}
+.news-feed-wrapper .icone-list div {
+  padding: 10px 15px 0 0;
+  align-items: center;
+}
+.news-feed-wrapper .icone-list div:hover {
+  background-color: #8ED0F9;
+}
+.news-feed-wrapper .nav-bottom button {
+  margin-top: 20px;
+  width: 90%;
+}
+
+/*# sourceMappingURL=news.css.map */

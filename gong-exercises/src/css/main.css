@@ -1,0 +1,65 @@
+BODY {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  border: 1px solid #E6ECF0;
+}
+
+.main {
+  width: 80em;
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.main .naviation-wrapper {
+  flex-grow: 0.5;
+}
+.main .profile-wrapper {
+  display: none;
+  flex-grow: 2;
+  border: 1px solid #E6ECF0;
+}
+.main .news-feed-wrapper {
+  flex-grow: 2;
+  border: 1px solid #E6ECF0;
+}
+.main .trends-wrapper {
+  flex-grow: 1;
+}
+@media only screen and (max-width: 599px) {
+  .main .button {
+    color: #96A3AE;
+  }
+}
+
+.button {
+  background-color: #0000FF;
+  border: none;
+  border-radius: 9999px;
+  color: white;
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+.button:hover {
+  background-color: #8ED0F9;
+}
+.button:active {
+  background-color: #0000FF;
+}
+
+.tweeter-logo {
+  color: #1AA1F2;
+  width: 40px;
+  fill: #1AA1F2;
+}
+
+.templates {
+  display: none;
+}
+
+/*# sourceMappingURL=main.css.map */

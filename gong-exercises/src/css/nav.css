@@ -1,0 +1,32 @@
+.naviation-wrapper {
+  margin-bottom: 20px;
+}
+.naviation-wrapper .navigation .nav-item-element {
+  flex-direction: column;
+  justify-content: flex-start;
+  display: flex;
+}
+.naviation-wrapper .navigation .nav-item-element a {
+  text-decoration: none;
+}
+.naviation-wrapper .navigation .nav-item {
+  padding: 10px 0 10px 0;
+  flex-direction: row;
+  justify-content: flex-start;
+  display: flex;
+}
+.naviation-wrapper .navigation .nav-item .nav-icon,
+.naviation-wrapper .navigation .nav-item .nav-text {
+  box-sizing: border-box;
+  display: flex;
+  padding: 0 10px 0 10px;
+}
+.naviation-wrapper .navigation .nav-icon img {
+  width: 20px;
+}
+.naviation-wrapper .navigation .nav-item .nav-text {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=nav.css.map */

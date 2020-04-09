@@ -1,0 +1,96 @@
+.trends-wrapper {
+  border: 1px solid #E6ECF0;
+}
+.trends-wrapper .search-box,
+.trends-wrapper .trends {
+  border-radius: 25px;
+  margin: 1.3em;
+  width: 90%;
+}
+.trends-wrapper .search-box {
+  height: 2em;
+}
+.trends-wrapper .trends {
+  background: #E6ECF0;
+}
+.trends-wrapper .trend-item {
+  border-bottom: 1px solid #E6ECF0;
+  margin: 1.2em 0 1.2em 0;
+  color: #96A3AE;
+  font-weight: 300;
+  padding: 0 0.2em 0 0.4em;
+}
+.trends-wrapper .trend-item:last-child {
+  border: none;
+}
+.trends-wrapper .trends .trends-header {
+  color: #000000;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 0.5em;
+}
+.trends-wrapper .trends .trends-footer {
+  color: #0000FF;
+  font-weight: 500;
+  padding: 0 0 1.3em 1em;
+}
+.trends-wrapper .top {
+  display: flex;
+  justify-content: space-between;
+}
+.trends-wrapper .top .arrow {
+  border-radius: 50%;
+  text-align: center;
+  width: 1.5em;
+}
+.trends-wrapper .top .arrow img {
+  width: 1em;
+  font-size: 0.7em;
+  filter: invert(95%) sepia(10%) saturate(114%) hue-rotate(162deg) brightness(93%) contrast(93%);
+}
+.trends-wrapper .top .arrow:hover {
+  filter: invert(48%) sepia(66%) saturate(2190%) hue-rotate(177deg) brightness(102%) contrast(90%);
+}
+.trends-wrapper .top,
+.trends-wrapper .mid,
+.trends-wrapper .bottom {
+  padding: 0.1em 0.3em 0.1em 0.3em;
+}
+.trends-wrapper .mid {
+  font-weight: bold;
+  color: #000000;
+}
+.trends-wrapper .search-box {
+  position: relative;
+}
+.trends-wrapper .search-box .search-box-input {
+  width: 100%;
+  color: #626262;
+  border: 1px solid #626262;
+  background: #E6ECF0;
+  padding: 0.6em 0.6em;
+  border-radius: 50px;
+  outline: none;
+  font-size: 1.2em;
+}
+.trends-wrapper .search-box ::-webkit-input-placeholder {
+  color: #626262;
+  text-transform: uppercase;
+}
+.trends-wrapper .search-box .search-box-button img {
+  width: 30px;
+}
+.trends-wrapper .search-box .search-box-button {
+  width: 20px;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: url(./assets/search.svg) no-repeat;
+}
+
+/*# sourceMappingURL=trends.css.map */

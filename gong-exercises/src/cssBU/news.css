@@ -53,10 +53,11 @@
 }
 .news-feed-wrapper .feed-item-footer .icon-e.liked img {
   font-size: 0.7em;
-  /*filter: invert(95%) sepia(100%) saturate(5%) hue-rotate(-70deg) brightness(50%) contrast(93%);*/
+  /*filter: invert(95%) sepia(100%) saturate(5%) hue-rotate(-70deg) brightness(50%) contrast(93%); */
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
   fill: red;
 }
+
 .news-feed-wrapper .story-col {
   width: 100%;
 }

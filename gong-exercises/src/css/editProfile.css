@@ -1,0 +1,74 @@
+.modal {
+  width: 30em;
+  height: 40em;
+}
+.modal .header {
+  padding: 0.6em;
+  display: flex;
+}
+.modal .header .closex,
+.modal .header .title,
+.modal .header .space {
+  align-self: flex-start;
+  flex-grow: 1;
+}
+.modal .header .space {
+  flex-grow: 5;
+}
+.modal .header .closex {
+  cursor: pointer;
+  font-size: 1.3em;
+}
+.modal .header .save {
+  align-self: flex-end;
+}
+.modal .header .title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.modal .header .button {
+  background-color: #0000FF;
+  border: none;
+  border-radius: 9999px;
+  color: white;
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  padding: 0.7em 1em;
+}
+.modal .header .button:hover {
+  background-color: #8ED0F9;
+}
+.modal .header .button:active {
+  background-color: #0000FF;
+}
+.modal .form-element {
+  border-bottom: 3px solid #626262;
+  padding: 0.5em 1em;
+}
+.modal .form-element label {
+  margin-left: 1em;
+  position: absolute;
+  color: #96A3AE;
+}
+.modal .form-element .box-input {
+  width: 100%;
+  color: #626262;
+  border: 1px solid #626262;
+  background: #E6ECF0;
+  padding: 0.6em 0.6em;
+  border-radius: 50px;
+  outline: none;
+  font-size: 1.2em;
+  padding: 1.1em 0 0 0.7em;
+}
+.modal .form-element .box-input ::-webkit-input-placeholder {
+  color: #626262;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=editprofile.css.map */

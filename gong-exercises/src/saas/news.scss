@@ -1,0 +1,127 @@
+@import './colors';
+@import './vars';
+
+.news-feed-wrapper {
+    .header,
+    .feed-item {
+    max-width: 48em;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid $grey-border-color;
+    }
+    
+    .header-icon img {
+        width: 40px;
+    }
+    .header .header-text,
+    .header .header-icon {
+        padding: 0.6em;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+    .feed-item {
+        display: flex;
+        direction: row;
+        padding: 6px;
+        border-bottom: 1px solid $grey-border-color;
+
+        .img-col img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .story-col {
+            padding: 10px;
+        }
+
+        .story-col .text-area textarea {
+            height: 3em;
+            border: 0px transparent;
+            font-size: 1.5em;
+            color: $grey-color-light;
+            width: 100%;
+        }
+        
+        .story-col .text-area textarea:hover, 
+        .story-col .text-area textarea:focus {
+            color: black;
+        }
+    
+    }
+
+    .profile {
+        border-bottom: 8px solid $grey-border-color;
+    }
+
+    .icon-e img {
+        width: 1.6em;
+        border-radius: 50%;
+    }
+
+    .feed-item-footer .icon-e img {
+        width: 14px;
+    }
+    .feed-item-footer .icon-e.liked img{
+        //filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+        font-size: 0.7em;
+        /*filter: invert(95%) sepia(100%) saturate(5%) hue-rotate(-70deg) brightness(50%) contrast(93%);*/
+        filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+        fill: red;
+    }
+
+    
+     
+
+    .story-col {
+        width: 100%;
+        .top-title-right {
+            cursor: pointer;
+            font-weight: 600;
+            color: red;
+        }
+        .top-title-right {
+            float: right;
+        }
+        .top-title .name{
+            font-weight: bold;
+        }
+        .top-title .more{
+            color: $grey-main;
+            font-size: 0.8em;
+        }
+        .feed-item-profile,
+        .icone-list  {
+            display: flex;
+            direction: row;
+            justify-content: space-between;
+        }
+        .description {
+            padding: 10px 0 10px 3px
+        }
+        
+        .icone-list {
+            justify-content: space-evenly;
+        }
+
+        .feed-item-footer {
+            justify-content: space-between;
+        }
+    }
+
+    .icone-list div{
+        padding: 10px 15px 0 0;
+        align-items: center;
+    }
+    .icone-list div:hover{
+        background-color:$tweet-color-hover;
+    }
+    .nav-bottom button{
+        margin-top: 20px;
+        width:90%;
+    }
+}

@@ -14,7 +14,6 @@
   flex-direction: row;
   justify-content: flex-start;
   display: flex;
-  cursor: pointer;
 }
 .naviation-wrapper .navigation .nav-item .nav-icon,
 .naviation-wrapper .navigation .nav-item .nav-text {

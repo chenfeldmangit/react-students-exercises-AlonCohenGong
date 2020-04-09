@@ -1,0 +1,178 @@
+@import './colors';
+@import './vars';
+
+.profile-wrapper {
+    .header,
+    .feed-item {
+    max-width: 48em;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid $grey-border-color;
+    }
+    
+    .header-icon img {
+        width: 40px;
+    }
+
+    .header-subtext {
+        padding: 0.6em;
+        font-size: 0.6em;
+    }
+    .header .header-text,
+    .header .header-icon {
+        padding: 0.6em;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+    .feed-item-top {
+        padding: 6px;
+        border-bottom: 1px solid $grey-border-color;
+
+        .img-back {
+            overflow: hidden;
+            height: 10em;
+        }
+        .img-back img{
+            height: 28em;
+        }
+
+        .img-back-bottom-row {
+            display: flex;
+            direction: row;
+            justify-content: space-between;
+
+            .img-back-bottom-row-button {
+                margin-top: 10px;
+            }
+
+            .img-col img {
+                width: 100px;
+                border-radius: 50%;
+                position: relative;
+                top: -30px;
+                left: 10px;
+            }
+
+        }
+
+        .icone-list  {
+            display: flex;
+            direction: row;
+            justify-content: space-between;
+            .icon-e,
+            .tweet {
+                @include bold-nav-links;
+            }
+
+            .tweet {
+                color: $tweet-color;
+                border-bottom: 2px solid $tweet-color;
+                a,
+                a:hover,
+                a:visited{
+                    color: $tweet-color;
+                }
+            }
+        }
+
+
+
+
+
+    }
+
+    .feed-item {
+        display: flex;
+        direction: row;
+        padding: 6px;
+        border-bottom: 1px solid $grey-border-color;
+
+        .img-back {
+            overflow: hidden;
+            height: 10em;
+        }
+        .img-back img{
+            height: 10em;
+        }
+
+        .img-col img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .story-col {
+            padding: 10px;
+        }
+
+        .story-col .text-area textarea {
+            height: 3em;
+            border: 0px transparent;
+            font-size: 1.5em;
+            color: $grey-color-light;
+            width: 100%;
+        }
+        
+        .story-col .text-area textarea:hover, 
+        .story-col .text-area textarea:focus {
+            color: black;
+        }
+    
+    }
+
+    .profile {
+        border-bottom: 8px solid $grey-border-color;
+    }
+
+    .icon-e img {
+        width: 1.6em;
+        border-radius: 50%;
+    }
+
+    .feed-item-footer .icon-e img {
+        width: 15px;
+    } 
+
+    .story-col {
+        .top-title .name{
+            font-weight: bold;
+        }
+        .top-title .more{
+            color: $grey-main;
+            font-size: 0.8em;
+        }
+        .feed-item-profile,
+        .icone-list  {
+            display: flex;
+            direction: row;
+            justify-content: space-between;
+        }
+        .description {
+            padding: 10px 0 10px 3px
+        }
+        
+        .icone-list {
+            justify-content: space-evenly;
+        }
+
+        .feed-item-footer {
+            justify-content: space-between;
+        }
+    }
+
+    .icone-list div{
+        padding: 10px 15px 0 0;
+        align-items: center;
+    }
+    .icone-list div:hover{
+        background-color:$tweet-color-hover;
+    }
+    .nav-bottom button{
+        margin-top: 20px;
+        width:90%;
+    }
+}

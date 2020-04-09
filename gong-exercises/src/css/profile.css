@@ -1,0 +1,153 @@
+.profile-wrapper .header,
+.profile-wrapper .feed-item {
+  max-width: 48em;
+}
+.profile-wrapper .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #E6ECF0;
+}
+.profile-wrapper .header-icon img {
+  width: 40px;
+}
+.profile-wrapper .header-subtext {
+  padding: 0.6em;
+  font-size: 0.6em;
+}
+.profile-wrapper .header .header-text,
+.profile-wrapper .header .header-icon {
+  padding: 0.6em;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.profile-wrapper .feed-item-top {
+  padding: 6px;
+  border-bottom: 1px solid #E6ECF0;
+}
+.profile-wrapper .feed-item-top .img-back {
+  overflow: hidden;
+  height: 10em;
+}
+.profile-wrapper .feed-item-top .img-back img {
+  height: 28em;
+}
+.profile-wrapper .feed-item-top .img-back-bottom-row {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+}
+.profile-wrapper .feed-item-top .img-back-bottom-row .img-back-bottom-row-button {
+  margin-top: 10px;
+}
+.profile-wrapper .feed-item-top .img-back-bottom-row .img-col img {
+  width: 100px;
+  border-radius: 50%;
+  position: relative;
+  top: -30px;
+  left: 10px;
+}
+.profile-wrapper .feed-item-top .icone-list {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+}
+.profile-wrapper .feed-item-top .icone-list .icon-e,
+.profile-wrapper .feed-item-top .icone-list .tweet {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.profile-wrapper .feed-item-top .icone-list .icon-e a,
+.profile-wrapper .feed-item-top .icone-list .icon-e a:hover,
+.profile-wrapper .feed-item-top .icone-list .icon-e a:visited,
+.profile-wrapper .feed-item-top .icone-list .tweet a,
+.profile-wrapper .feed-item-top .icone-list .tweet a:hover,
+.profile-wrapper .feed-item-top .icone-list .tweet a:visited {
+  color: #8ED0F9;
+  text-decoration: none;
+}
+.profile-wrapper .feed-item-top .icone-list .tweet {
+  color: #0000FF;
+  border-bottom: 2px solid #0000FF;
+}
+.profile-wrapper .feed-item-top .icone-list .tweet a,
+.profile-wrapper .feed-item-top .icone-list .tweet a:hover,
+.profile-wrapper .feed-item-top .icone-list .tweet a:visited {
+  color: #0000FF;
+}
+.profile-wrapper .feed-item {
+  display: flex;
+  direction: row;
+  padding: 6px;
+  border-bottom: 1px solid #E6ECF0;
+}
+.profile-wrapper .feed-item .img-back {
+  overflow: hidden;
+  height: 10em;
+}
+.profile-wrapper .feed-item .img-back img {
+  height: 10em;
+}
+.profile-wrapper .feed-item .img-col img {
+  width: 50px;
+  border-radius: 50%;
+}
+.profile-wrapper .feed-item .story-col {
+  padding: 10px;
+}
+.profile-wrapper .feed-item .story-col .text-area textarea {
+  height: 3em;
+  border: 0px transparent;
+  font-size: 1.5em;
+  color: #96A3AE;
+  width: 100%;
+}
+.profile-wrapper .feed-item .story-col .text-area textarea:hover,
+.profile-wrapper .feed-item .story-col .text-area textarea:focus {
+  color: black;
+}
+.profile-wrapper .profile {
+  border-bottom: 8px solid #E6ECF0;
+}
+.profile-wrapper .icon-e img {
+  width: 1.6em;
+  border-radius: 50%;
+}
+.profile-wrapper .feed-item-footer .icon-e img {
+  width: 15px;
+}
+.profile-wrapper .story-col .top-title .name {
+  font-weight: bold;
+}
+.profile-wrapper .story-col .top-title .more {
+  color: #626262;
+  font-size: 0.8em;
+}
+.profile-wrapper .story-col .feed-item-profile,
+.profile-wrapper .story-col .icone-list {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+}
+.profile-wrapper .story-col .description {
+  padding: 10px 0 10px 3px;
+}
+.profile-wrapper .story-col .icone-list {
+  justify-content: space-evenly;
+}
+.profile-wrapper .story-col .feed-item-footer {
+  justify-content: space-between;
+}
+.profile-wrapper .icone-list div {
+  padding: 10px 15px 0 0;
+  align-items: center;
+}
+.profile-wrapper .icone-list div:hover {
+  background-color: #8ED0F9;
+}
+.profile-wrapper .nav-bottom button {
+  margin-top: 20px;
+  width: 90%;
+}
+
+/*# sourceMappingURL=profile.css.map */

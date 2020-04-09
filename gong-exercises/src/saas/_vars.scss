@@ -1,0 +1,64 @@
+@import './colors';
+
+$main-font-size: 16px;
+
+@mixin bold-links () {
+    font-size: 1.2em;
+    font-weight: bold;
+
+}
+
+@mixin bold-nav-links () {
+    font-size: 1.3em;
+    font-weight: bold;
+    a,
+    a:hover,
+    a:visited{
+        color: $tweet-color-hover;
+        text-decoration: none;
+    }
+}
+
+@mixin box-input {
+        width:100%;
+        color: $grey-main;
+        border: 1px solid $grey-main;
+        background: $grey-border-color;
+        padding: 0.6em 0.6em;
+        border-radius: 50px;
+        outline: none;
+        font-size: 1.2em;
+    
+    ::-webkit-input-placeholder {
+        color: $grey-main;
+        text-transform: uppercase;
+    }
+}
+
+@mixin big-button () {
+        
+            background-color: $tweet-color;
+            border: none;
+            border-radius: 9999px;
+            color: white;
+            padding: 1em 2em;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+
+            &:hover {
+                background-color: $tweet-color-hover;
+            }
+            &:active {
+                background-color: $tweet-color;
+            }
+}
+
+@mixin mid-button () {
+    @include big-button();
+    padding: 0.7em 1em;
+
+}

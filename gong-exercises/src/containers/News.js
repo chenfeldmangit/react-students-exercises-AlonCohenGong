@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {tweete} from '../JSON/tweets';
-import Tweet from '../containers/news/Tweet';
+import Tweet from '../components/news/Tweet';
 
 import '../css/news.css';
 

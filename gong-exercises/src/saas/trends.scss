@@ -1,0 +1,113 @@
+@import './colors';
+@import './vars';
+
+.trends-wrapper {
+    border: 1px solid $grey-border-color;
+
+    .search-box,
+    .trends  
+    {
+        border-radius: 25px;
+        margin: 1.3em;
+        width: 90%;
+
+    }
+    .search-box {
+        height: 2em;
+    } 
+    .trends {
+        background: $grey-border-color;
+
+    }
+
+    .trend-item {
+        border-bottom: 1px solid $grey-border-color;
+        margin: 1.2em 0 1.2em 0;
+        color: $grey-color-light;
+        font-weight: 300;
+        padding: 0 0.2em 0 0.4em; 
+    }
+
+    .trend-item:last-child {
+        border: none;
+    }
+
+    .trends .trends-header {
+        color: #000000;
+        font-size: 1.3em;
+        font-weight: bold;
+        padding: 0.5em;
+    }
+    .trends .trends-footer {
+        color: $tweet-color;
+        font-weight: 500;
+        padding: 0 0 1.3em 1em;
+    }
+
+    .top{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .top .arrow {
+        border-radius: 50%;
+        text-align: center;
+
+        width: 1.5em;
+    }
+    .top .arrow img{
+        width: 1em;
+        font-size: 0.7em;
+        filter: invert(95%) sepia(10%) saturate(114%) hue-rotate(162deg) brightness(93%) contrast(93%);
+    }
+
+    .top .arrow:hover{
+        filter: invert(48%) sepia(66%) saturate(2190%) hue-rotate(177deg) brightness(102%) contrast(90%);
+    }
+
+    .top,
+    .mid,
+    .bottom {
+        padding: 0.1em 0.3em 0.1em 0.3em;
+    }
+
+    .mid {
+        font-weight: bold;
+        color: #000000
+    }
+    
+    .search-box{
+        position: relative;
+        
+        .search-box-input {
+            width:100%;
+            color: $grey-main;
+            border: 1px solid $grey-main;
+            background: $grey-border-color;
+            padding: 0.6em 0.6em;
+            border-radius: 50px;
+            outline: none;
+            font-size: 1.2em;
+        }
+        ::-webkit-input-placeholder {
+            color: $grey-main;
+            text-transform: uppercase;
+        }
+
+        .search-box-button img{
+            width: 30px;
+        }
+        .search-box-button {
+            width:20px;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border:0;
+            border-radius: 50%;
+            background:url(./assets/search.svg) no-repeat;
+        }
+    }
+}

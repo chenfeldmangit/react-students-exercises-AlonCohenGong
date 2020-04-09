@@ -15,6 +15,7 @@ BODY {
   flex-grow: 0.5;
 }
 .main .profile-wrapper {
+  display: none;
   flex-grow: 2;
   border: 1px solid #E6ECF0;
 }

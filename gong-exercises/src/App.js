@@ -1,25 +1,51 @@
-import React from 'react';
-import Navigation from './components/Navigation';
-import News from './components/News';
-import Trends from './components/Trends';
+import React , {Component} from 'react';
+import Navigation from './containers/Navigation';
+import News from './containers/News';
+import Profile from './containers/Profile';
+import Trends from './containers/Trends';
+import {profile} from './JSON/profile';
 import './css/main.css';
 
 import './App.css';
 
-function App() {
-  return (
-    <div className="App main">
-      <h1>
-        Gong React Tweeter !
-      </h1>
-      <div className="main">
-        <Navigation />
-        <News />
-        <Trends />
-        
-      </div>  
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            profileDisplay: false,
+            profile: {...profile},
+        };
+
+    }
+    onNavClickHandler = (navId) => {
+        console.log('Profile click')
+        this.setState((state)=>({
+            profileDisplay: navId==='profile'? true : false,
+        }));
+    };
+
+    onProfileUpdateHanler = (pSettings) => {
+        console.log('onProfileUpdateHanler', pSettings);
+        this.setState({
+            profile: {...pSettings},
+        })
+    }
+
+
+    render() {
+        return (
+            <div className="App main">
+                <div className="header"><h1>Tweeter</h1></div>
+                <div className="main">
+                    <Navigation onNavClick={this.onNavClickHandler} />
+
+                    {!this.state.profileDisplay? <News /> : <Profile profile={this.state.profile} onProfileUpdateHanler={this.onProfileUpdateHanler} /> }
+                    <Trends />
+
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;

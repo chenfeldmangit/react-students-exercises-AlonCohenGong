@@ -1,0 +1,61 @@
+@import './colors';
+@import './vars';
+
+BODY {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: $main-font-size;
+    border: 1px solid $grey-border-color;
+}
+
+.main {    
+    width: 80em;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+
+    .naviation-wrapper {
+        //width: 12em;
+        //float: left;
+        flex-grow: 0.5;
+    }
+    .profile-wrapper {
+
+        //width: 40em;
+        flex-grow: 2;
+        //float: left;
+        border: 1px solid #E6ECF0;
+    }
+    .news-feed-wrapper {
+        //width: 40em;
+        flex-grow: 2;
+        //float: left;
+        border: 1px solid #E6ECF0;
+    }
+    .trends-wrapper {
+        //width: 25em;
+        flex-grow: 1;
+        //float: left;
+    }
+    
+    //media
+    @media only screen and (max-width: 599px) {
+        .button {
+            color: $grey-color-light;
+        }
+    }
+}
+
+.button {
+    @include big-button();
+}
+
+.tweeter-logo {
+    color: $tweet-color-light;
+    width: 40px;
+    fill: $tweet-color-light;
+}
+
+.templates {
+    display: none;
+}

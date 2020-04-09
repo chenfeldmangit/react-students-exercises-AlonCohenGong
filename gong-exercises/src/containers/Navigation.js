@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavItem from '../containers/navigation/NavItem';
+import NavItem from '../components/navigation/NavItem';
 import '../css/nav.css';
 
 class Navigation extends Component{
@@ -12,11 +12,11 @@ class Navigation extends Component{
                     </div>
                     <div className="navigation">
                         <nav className="nav-item-element">
-                            <NavItem click={console.log('dd')} caption="Home" imgName="home.svg"/>
+                            <NavItem click={console.log('dd')} caption="Home" imgName="home.svg" onNavClick={()=>this.props.onNavClick('home')}/>
                             <NavItem click={console.log('dd')} caption="Explore" imgName="explore.svg"/>
                             <NavItem click={console.log('dd')} caption="notification" imgName="notification.svg"/>
                             <NavItem click={console.log('dd')} caption="Messages" imgName="messages.svg"/>
-                            <NavItem click={console.log('dd')} caption="Profile" imgName="explore.svg"/>
+                            <NavItem click={console.log('dd')} caption="Profile" imgName="explore.svg" onNavClick={()=>this.props.onNavClick('profile')}/>
                             <NavItem click={console.log('dd')} caption="Bookmarks" imgName="bookmarks.svg"/>
                             <br/><br/>
                         

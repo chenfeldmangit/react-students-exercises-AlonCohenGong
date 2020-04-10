@@ -38,23 +38,23 @@ export const tweete = [
     'text': 'keep the stressing from our everyday life on our minds lorm ipsum sd s ksd skd sdk sd ksd ksd ksd k'
     },
     {
-        'user': 'alon 1',
+    'user': 'alon 1',
+    'name': 'rambo 3',
+    'from': '@Alon_NEWS',
+    'time': '4d 8m',
+    'id': 'aloncon3',
+    'img': 'https://pbs.twimg.com/profile_images/1207525587427872768/JWMsWBr-_400x400.jpg',
+    'text': 'Sand beneath our feet,     big blue sky above our heads    No need to keep the stressing from our everyday life on our minds    We have got to leave all that behind .'
+    },
+    {
+        'user': 'alon 2',
         'name': 'rambo 3',
-        'from': '@Alon_NEWS',
-        'time': '4d 8m',
-        'id': 'aloncon3',
-        'img': 'https://pbs.twimg.com/profile_images/1207525587427872768/JWMsWBr-_400x400.jpg',
-        'text': 'Sand beneath our feet,     big blue sky above our heads    No need to keep the stressing from our everyday life on our minds    We have got to leave all that behind .'
-        },
-        {
-            'user': 'alon 2',
-            'name': 'rambo 3',
-            'from': '@Mosheeeeee_NEWS',
-            'time': '7d 18m',        
-            'id': 'aloncon4',
-            'img': 'https://pbs.twimg.com/profile_images/1227307215079563264/RFhjEBVm_400x400.jpg',
-            'text': 'keep the stressing from our everyday life on our minds lorm ipsum sd s ksd skd sdk sd ksd ksd ksd k'
-            }
+        'from': '@Mosheeeeee_NEWS',
+        'time': '7d 18m',
+        'id': 'aloncon4',
+        'img': 'https://pbs.twimg.com/profile_images/1227307215079563264/RFhjEBVm_400x400.jpg',
+        'text': 'keep the stressing from our everyday life on our minds lorm ipsum sd s ksd skd sdk sd ksd ksd ksd k'
+        }
 
 
 ];

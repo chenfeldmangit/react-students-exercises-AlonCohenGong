@@ -49,6 +49,9 @@ BODY {
 .button {
     @include big-button();
 }
+.button:disabled {
+    @include big-button();
+}
 
 .tweeter-logo {
     color: $tweet-color-light;

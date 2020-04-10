@@ -52,6 +52,10 @@ $main-font-size: 16px;
             &:hover {
                 background-color: $tweet-color-hover;
             }
+            &:disabled {
+              background-color: $tweet-color-hover;
+              cursor: not-allowed;
+            }
             &:active {
                 background-color: $tweet-color;
             }

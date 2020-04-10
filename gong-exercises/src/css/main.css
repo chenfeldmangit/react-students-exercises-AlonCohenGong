@@ -47,7 +47,35 @@ BODY {
 .button:hover {
   background-color: #8ED0F9;
 }
+.button:disabled {
+  background-color: #8ED0F9;
+  cursor: not-allowed;
+}
 .button:active {
+  background-color: #0000FF;
+}
+
+.button:disabled {
+  background-color: #0000FF;
+  border: none;
+  border-radius: 9999px;
+  color: white;
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+.button:disabled:hover {
+  background-color: #8ED0F9;
+}
+.button:disabled:disabled {
+  background-color: #8ED0F9;
+  cursor: not-allowed;
+}
+.button:disabled:active {
   background-color: #0000FF;
 }
 

@@ -43,6 +43,10 @@
 .modal .header .button:hover {
   background-color: #8ED0F9;
 }
+.modal .header .button:disabled {
+  background-color: #8ED0F9;
+  cursor: not-allowed;
+}
 .modal .header .button:active {
   background-color: #0000FF;
 }

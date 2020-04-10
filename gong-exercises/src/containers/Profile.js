@@ -44,7 +44,7 @@ class Profile extends Component {
                     <button className="button" onClick={this.editProfileHandler}>Edit Profile</button>
                 </div>
                 </div>
-                    <div>
+                    <div style={{textAlign: 'left', color:'#00eeFF'}}>
                         <div>id: {this.props.profile.id}</div>
                         <div>Name: {this.props.profile.name}</div>
                         <div>Bio: {this.props.profile.bio}</div>

@@ -21,6 +21,7 @@
     }
 
     .trend-item {
+        text-align: left;
         border-bottom: 1px solid $grey-border-color;
         margin: 1.2em 0 1.2em 0;
         color: $grey-color-light;
@@ -80,7 +81,7 @@
         position: relative;
         
         .search-box-input {
-            width:100%;
+            width:85%;
             color: $grey-main;
             border: 1px solid $grey-main;
             background: $grey-border-color;
@@ -107,7 +108,7 @@
             height: 30px;
             border:0;
             border-radius: 50%;
-            background:url(./assets/search.svg) no-repeat;
+            background:url(../assets/search.svg) no-repeat;
         }
     }
 }

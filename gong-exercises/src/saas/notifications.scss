@@ -1,0 +1,25 @@
+@import './colors';
+@import './vars';
+
+.notifications-wrapper {
+  .top-nav {
+    display: flex;
+    justify-content: space-evenly;
+    DIV {
+      width:100%;
+      line-height: 2em;
+      color: #1aa1f2;
+      font-weight: bold;
+    }
+    DIV.selected {
+      border-bottom: 3px solid #0000ff;
+    }
+  }
+
+  .feed-item.profile {
+    padding: 1em 1em;
+    .img-icon img {
+      width:3em;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.notifications-wrapper .top-nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+.notifications-wrapper .top-nav DIV {
+  width: 100%;
+  line-height: 2em;
+  color: #1aa1f2;
+  font-weight: bold;
+}
+.notifications-wrapper .top-nav DIV.selected {
+  border-bottom: 3px solid #0000ff;
+}
+.notifications-wrapper .feed-item.profile {
+  padding: 1em 1em;
+}
+.notifications-wrapper .feed-item.profile .img-icon img {
+  width: 3em;
+}
+
+/*# sourceMappingURL=notifications.css.map */

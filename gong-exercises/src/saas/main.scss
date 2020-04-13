@@ -26,7 +26,8 @@ BODY {
         //float: left;
         border: 1px solid #E6ECF0;
     }
-    .news-feed-wrapper {
+    .news-feed-wrapper,
+    .notifications-wrapper {
         //width: 40em;
         flex-grow: 2;
         //float: left;
@@ -34,7 +35,7 @@ BODY {
     }
     .trends-wrapper {
         //width: 25em;
-        flex-grow: 1;
+        flex-grow: 0;
         //float: left;
     }
     

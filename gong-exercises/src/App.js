@@ -1,8 +1,10 @@
 import React , {Component} from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Navigation from './containers/Navigation';
 import News from './containers/News';
 import Profile from './containers/Profile';
 import Trends from './containers/Trends';
+import NotificationsConintainer from './containers/NotificationsContainer';
 import {profile} from './JSON/profile';
 import './css/main.css';
 
@@ -43,11 +45,21 @@ class App extends Component {
             <div className="App main">
                 <div className="header"><h1>Tweeter</h1></div>
                 <div className="main">
-                    <Navigation onNavClick={this.onNavClickHandler} />
-
-                    {!this.state.profileDisplay? <News tweetsSearchTerm={this.state.tweetsSearchTerm} /> : <Profile profile={this.state.profile} onProfileUpdateHanler={this.onProfileUpdateHanler} /> }
+                    <BrowserRouter>
+                        <Navigation onNavClick={this.onNavClickHandler} />
+                       <Switch>
+                           <Route path="/" component={()=><News tweetsSearchTerm={this.state.tweetsSearchTerm} />} exact/>
+                           <Route path="/News" component={()=><News tweetsSearchTerm={this.state.tweetsSearchTerm} />}/>
+                           <Route path="/Notifications" component={()=><NotificationsConintainer />}/>
+                           <Route path="/Profile" component={()=> <Profile profile={this.state.profile} onProfileUpdateHanler={this.onProfileUpdateHanler} /> }/>
+                           <Route component={()=><div> Page Not Found </div>}/>
+                       </Switch>
+                    </BrowserRouter>
                     <Trends onSearchClickHandler={this.onSearchClickHandler}/>
 
+                    {/*
+                    {this.state.profileDisplay ? <News tweetsSearchTerm={this.state.tweetsSearchTerm} /> : <NotificationsConintainer /> }
+                    {!this.state.profileDisplay ? <News tweetsSearchTerm={this.state.tweetsSearchTerm} /> : <Profile profile={this.state.profile} onProfileUpdateHanler={this.onProfileUpdateHanler} />*/}
                 </div>
             </div>
         );

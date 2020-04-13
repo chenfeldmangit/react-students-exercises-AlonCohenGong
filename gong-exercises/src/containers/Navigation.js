@@ -12,12 +12,12 @@ class Navigation extends Component{
                     </div>
                     <div className="navigation">
                         <nav className="nav-item-element">
-                            <NavItem click={console.log('dd')} caption="Home" imgName="home.svg" onNavClick={()=>this.props.onNavClick('home')}/>
-                            <NavItem click={console.log('dd')} caption="Explore" imgName="explore.svg"/>
-                            <NavItem click={console.log('dd')} caption="notification" imgName="notification.svg"/>
-                            <NavItem click={console.log('dd')} caption="Messages" imgName="messages.svg"/>
-                            <NavItem click={console.log('dd')} caption="Profile" imgName="explore.svg" onNavClick={()=>this.props.onNavClick('profile')}/>
-                            <NavItem click={console.log('dd')} caption="Bookmarks" imgName="bookmarks.svg"/>
+                            <NavItem link="News" caption="Home" imgName="home.svg" onNavClick={()=>this.props.onNavClick('home')}/>
+                            <NavItem link="Explore" caption="Explore" imgName="explore.svg"/>
+                            <NavItem link="Notifications"caption="Notification" imgName="notification.svg"/>
+                            <NavItem link="Messages" caption="Messages" imgName="messages.svg"/>
+                            <NavItem link="Profile" caption="Profile" imgName="explore.svg" onNavClick={()=>this.props.onNavClick('profile')}/>
+                            <NavItem link="Bookmarks" caption="Bookmarks" imgName="bookmarks.svg"/>
                             <br/><br/>
                         
                             <div className="nav-bottom">

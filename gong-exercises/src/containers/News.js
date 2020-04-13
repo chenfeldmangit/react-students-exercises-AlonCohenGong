@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Throbber from '../UI/Throbber';
 import Modal from '../UI/Modal';
 import {tweete} from '../JSON/tweets';
@@ -6,44 +6,30 @@ import Tweet from '../components/news/Tweet';
 
 import '../css/news.css';
 
-class News extends Component {
-    constructor(props) {
-        super(props);
+function News (props) {
+    const [throbber, setThrobber] = useState(false);
+    const [tweetText, setTweetText] = useState('');
+    const [newsItems, setNewsItems] = useState([]);
 
-        this.state = {
-            throbber: false,
-            tweetText: '',
-            newsItems : [],
-        }
-    }
+    useEffect(()=>{
+        console.log('useEffect tweetItems on..');
+        setNewsItems([...tweete]);
+    }, []);
 
-    componentDidMount() {
-        this.setState(({
-            newsItems: [...tweete],
-        }));
-    }
-
-    onLikeClickHandler = (key) => {
+    const onLikeClickHandler = (key) => {
         console.log('onLikeClickHandler' , key);
-        const tmpNewsItems = this.state.newsItems.map((item)=> (item.id==key ? {...item, 'liked': !item.liked} : item ));
+        const tmpNewsItems = newsItems.map((item)=> (item.id==key ? {...item, 'liked': !item.liked} : item ));
         console.log('like', tmpNewsItems);
-        this.setState(({
-            newsItems: [...tmpNewsItems],
-        }));
+        setNewsItems([...tmpNewsItems]);
     };
-    onDeleteClickHandler = (key) => {
+    const onDeleteClickHandler = (key) => {
         console.log('onLikeClickHandler' , key);
-        const tmpNewsItems = this.state.newsItems.filter((item)=> item.id != key);
+        const tmpNewsItems = newsItems.filter((item)=> item.id != key);
         console.log('onLikeClickHandler' , tmpNewsItems);
-        this.setState(({
-            newsItems: [...tmpNewsItems],
-        }));
+        setNewsItems([...tmpNewsItems]);
     };
-    onTweetClickHandler = (key) => {
-        this.setState((state)=>({
-            throbber: true,
-        }));
-        console.log('TweetHandler' , key);
+    const onTweetClickHandler = (key) => {
+        setThrobber(true);
         const newTweet =  {
             user: 'IvankaTrump',
             name: 'Ivanka Trump',
@@ -52,33 +38,25 @@ class News extends Component {
             id: 'Ivanka'+Math.random().toString().slice(2,6),
             img: 'https://pbs.twimg.com/profile_images/1054179226100908032/i5ZXfFdE_400x400.jpg',
             liked: false,
-            text: this.state.tweetText,
+            text: tweetText,
         };
         setTimeout(()=>{
-            this.setState((state)=>({
-                throbber: false,
-                tweetText: '',
-                newsItems: [newTweet, ...state.newsItems],
-            }));
+            setThrobber(false);
+            setTweetText('');
+            setNewsItems([newTweet, ...newsItems]);
         }, 2000);
     };
-    onTweetTextChangeHandler = (e) => {
-        console.log('onTweetTextChangeHandler' , e.target.value);
-        this.setState(({
-            tweetText: e.target.value,
-        }));
-    };
+ /*   const onTweetTextChangeHandler = (e) => {
+        setTweetText(e.target.value);
+    };*/
 
-    render () {
-        console.log('tweete : ' , tweete);
-        const {tweetsSearchTerm} = this.props;
-
-        const tweetItemsFiltered = tweetsSearchTerm.length ? this.state.newsItems.filter(item => item.text.indexOf(tweetsSearchTerm) >= 0) : this.state.newsItems;
-        const tweetItems = tweetItemsFiltered.map((item)=>{
-            return (
+    const {tweetsSearchTerm} = props;
+    const tweetItemsFiltered = tweetsSearchTerm.length ? newsItems.filter(item => item.text.indexOf(tweetsSearchTerm) >= 0) : newsItems;
+    const tweetItems = tweetItemsFiltered.map((item)=>{
+        return (
                 <Tweet profileImgSrc={item.img} 
-                       likeHandler={this.onLikeClickHandler}
-                       onDeleteClickHandler={this.onDeleteClickHandler}
+                       likeHandler={onLikeClickHandler}
+                       onDeleteClickHandler={onDeleteClickHandler}
                        name={item.name} 
                        more={item.from} 
                        when={item.when} 
@@ -89,7 +67,7 @@ class News extends Component {
         )});
         return (
             <>
-                {this.state.throbber && <Modal><Throbber/></Modal>}
+                {throbber && <Modal><Throbber/></Modal>}
                 <div className="news-feed-wrapper">
                     <div className="header">
                         <div className="header-text">Home</div>
@@ -106,8 +84,8 @@ class News extends Component {
                                     rows="1"
                                     cols="200"
                                     placeholder="What's going on today ..."
-                                    value={this.state.tweetText}
-                                    onChange={this.onTweetTextChangeHandler}
+                                    value={tweetText}
+                                    onChange={e => setTweetText(e.target.value)}
                                 />
                             </div>
                             <div className="feed-item-profile">
@@ -122,8 +100,8 @@ class News extends Component {
                                 <div>
                                     <button className="button"
                                             id="tweet-button"
-                                            disabled={this.state.tweetText.length < 3}
-                                            onClick={this.onTweetClickHandler}>Tweeet</button>
+                                            disabled={tweetText.length < 3}
+                                            onClick={onTweetClickHandler}>Tweeet</button>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +115,6 @@ class News extends Component {
             </>
 
         );
-    }
 };
 
 export default News;

@@ -1,7 +1,8 @@
 @import './colors';
 @import './vars';
 
-.news-feed-wrapper {
+.news-feed-wrapper,
+.notifications-wrapper {
     .header,
     .feed-item {
     max-width: 48em;

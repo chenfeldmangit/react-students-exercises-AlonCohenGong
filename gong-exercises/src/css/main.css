@@ -18,12 +18,13 @@ BODY {
   flex-grow: 2;
   border: 1px solid #E6ECF0;
 }
-.main .news-feed-wrapper {
+.main .news-feed-wrapper,
+.main .notifications-wrapper {
   flex-grow: 2;
   border: 1px solid #E6ECF0;
 }
 .main .trends-wrapper {
-  flex-grow: 1;
+  flex-grow: 0;
 }
 @media only screen and (max-width: 599px) {
   .main .button {

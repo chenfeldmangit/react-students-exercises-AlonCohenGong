@@ -13,6 +13,7 @@ class App extends Component {
         super(props);
         this.state = {
             profileDisplay: false,
+            tweetsSearchTerm: '',
             profile: {...profile},
         };
 
@@ -29,7 +30,12 @@ class App extends Component {
         this.setState({
             profile: {...pSettings},
         })
-    }
+    };
+
+    onSearchClickHandler = (searchVal)=>{
+        console.log('onSearchClickHandler', searchVal);
+        this.setState({tweetsSearchTerm: searchVal});
+    };
 
 
     render() {
@@ -39,8 +45,8 @@ class App extends Component {
                 <div className="main">
                     <Navigation onNavClick={this.onNavClickHandler} />
 
-                    {!this.state.profileDisplay? <News /> : <Profile profile={this.state.profile} onProfileUpdateHanler={this.onProfileUpdateHanler} /> }
-                    <Trends />
+                    {!this.state.profileDisplay? <News tweetsSearchTerm={this.state.tweetsSearchTerm} /> : <Profile profile={this.state.profile} onProfileUpdateHanler={this.onProfileUpdateHanler} /> }
+                    <Trends onSearchClickHandler={this.onSearchClickHandler}/>
 
                 </div>
             </div>

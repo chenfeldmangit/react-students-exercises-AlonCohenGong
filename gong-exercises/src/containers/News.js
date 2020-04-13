@@ -71,8 +71,10 @@ class News extends Component {
 
     render () {
         console.log('tweete : ' , tweete);
-        const tweetItems = this.state.newsItems.map((item)=>{
+        const {tweetsSearchTerm} = this.props;
 
+        const tweetItemsFiltered = tweetsSearchTerm.length ? this.state.newsItems.filter(item => item.text.indexOf(tweetsSearchTerm) >= 0) : this.state.newsItems;
+        const tweetItems = tweetItemsFiltered.map((item)=>{
             return (
                 <Tweet profileImgSrc={item.img} 
                        likeHandler={this.onLikeClickHandler}
@@ -91,11 +93,11 @@ class News extends Component {
                 <div className="news-feed-wrapper">
                     <div className="header">
                         <div className="header-text">Home</div>
-                        <div className="header-icon"><a href="#"><img src="../assets/post.svg" alt="post ..."/></a></div>
+                        <div className="header-icon"><img src={`${process.env.PUBLIC_URL}/assets/post.svg`} alt="post ..."/></div>
                     </div>
                     <div className="feed-item profile">
                         <div className="img-col">
-                            <a href="#"><img src="../assets/me.jpg" alt="profile image"/></a>
+                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/me.jpg`} alt="profile image"/></a>
                         </div>
                         <div className="story-col">
                             <div className="text-area">

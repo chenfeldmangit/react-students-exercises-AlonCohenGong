@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../css/trends.css';
 
-class Trends extends Component {
-    render () {
+function Trends (props) {
+        const [fSearch, setfSearch] = useState("");
+
+        const onSearchClickInput = ()=>{
+            console.log(fSearch);
+            props.onSearchClickHandler(fSearch);
+        };
+
         return (
             <div className="trends-wrapper">
                 <div className="search-box">
-                    <input className="search-box-input" type="input" placeholder="Follow ..."/>
-                    <button className="search-box-button"><img src="../assets/search.svg" alt="Search"/></button>
+                    <input className="search-box-input" type="input" placeholder="Search ..." value={fSearch} onChange={e => setfSearch(e.target.value)}/>
+                    <button className="search-box-button"><img src="../assets/search.svg" alt="Search" onClick={()=>onSearchClickInput()}/></button>
 
                 </div>
                 <div className="trends">
@@ -63,7 +69,6 @@ class Trends extends Component {
             </div>
 
     );
-    }
 };
 
 export default Trends;

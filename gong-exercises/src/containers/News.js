@@ -1,35 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import useFetchFromLocalStore from '../data/useFetchFromLocalStore';
 import Throbber from '../UI/Throbber';
 import Modal from '../UI/Modal';
-import {tweete} from '../JSON/tweets';
+import DbApi from "../data/DbApi";
+//import {tweete} from '../JSON/tweets';
 import Tweet from '../components/news/Tweet';
-
 import '../css/news.css';
 
-function News (props) {
-    const [throbber, setThrobber] = useState(false);
-    const [tweetText, setTweetText] = useState('');
-    const [newsItems, setNewsItems] = useState([]);
 
-    useEffect(()=>{
-        console.log('useEffect tweetItems on..');
-        setNewsItems([...tweete]);
-    }, []);
+function News (props) {
+    const dataKey = 'NEWS-TWEETS';
+    //const [throbber, setThrobber] = useState(false);
+    const [tweetText, setTweetText] = useState('');
+    //const [newsItems, setNewsItems] = useState([]);
+    const [data, setData, throbber] = useFetchFromLocalStore(dataKey, [], false);
+
+    let newsItems = [...data]; //useFetchFromLocalStore(dataKey, []);
 
     const onLikeClickHandler = (key) => {
         console.log('onLikeClickHandler' , key);
         const tmpNewsItems = newsItems.map((item)=> (item.id==key ? {...item, 'liked': !item.liked} : item ));
-        console.log('like', tmpNewsItems);
-        setNewsItems([...tmpNewsItems]);
+        //setNewsItems(DbApi.updateNewsTweets([...tmpNewsItems]));
+        setData([...tmpNewsItems]);
+
     };
     const onDeleteClickHandler = (key) => {
         console.log('onLikeClickHandler' , key);
         const tmpNewsItems = newsItems.filter((item)=> item.id != key);
         console.log('onLikeClickHandler' , tmpNewsItems);
-        setNewsItems([...tmpNewsItems]);
+        //setNewsItems(DbApi.updateNewsTweets([...tmpNewsItems]));
+        setData([...tmpNewsItems]);
     };
     const onTweetClickHandler = (key) => {
-        setThrobber(true);
+        //setThrobber(true);
         const newTweet =  {
             user: 'IvankaTrump',
             name: 'Ivanka Trump',
@@ -41,26 +44,26 @@ function News (props) {
             text: tweetText,
         };
         setTimeout(()=>{
-            setThrobber(false);
+            //setThrobber(false);
             setTweetText('');
-            setNewsItems([newTweet, ...newsItems]);
+            //setNewsItems([newTweet, ...newsItems]);
+            //setNewsItems(DbApi.updateNewsTweets([newTweet, ...newsItems]));
+            setData([newTweet, ...newsItems]);
         }, 2000);
     };
- /*   const onTweetTextChangeHandler = (e) => {
-        setTweetText(e.target.value);
-    };*/
 
     const {tweetsSearchTerm} = props;
     const tweetItemsFiltered = tweetsSearchTerm.length ? newsItems.filter(item => item.text.indexOf(tweetsSearchTerm) >= 0) : newsItems;
-    const tweetItems = tweetItemsFiltered.map((item)=>{
+    console.log('news', tweetItemsFiltered);
+    const tweetItems = tweetItemsFiltered?.map((item)=>{
         return (
-                <Tweet profileImgSrc={item.img} 
+                <Tweet key={item.id}
+                       profileImgSrc={item.img}
                        likeHandler={onLikeClickHandler}
                        onDeleteClickHandler={onDeleteClickHandler}
                        name={item.name} 
                        more={item.from} 
-                       when={item.when} 
-                       key={item.id} 
+                       when={item.when}
                        id={item.id}
                        text={item.text} 
                        liked={item.liked}/>
@@ -75,7 +78,7 @@ function News (props) {
                     </div>
                     <div className="feed-item profile">
                         <div className="img-col">
-                            <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/me.jpg`} alt="profile image"/></a>
+                           <img src={`${process.env.PUBLIC_URL}/assets/me.jpg`} alt="profile image"/>
                         </div>
                         <div className="story-col">
                             <div className="text-area">
@@ -91,10 +94,10 @@ function News (props) {
                             <div className="feed-item-profile">
                                 <div>
                                     <div className="icone-list">
-                                        <div className="icon-e"><a href="#"><img src="../assets/img.svg" alt="img ..."/></a></div>
-                                        <div className="icon-e"><a href="#"><img src="../assets/gif.svg" alt="gif ..."/></a></div>
-                                        <div className="icon-e"><a href="#"><img src="../assets/doc.svg" alt="doc ..."/></a></div>
-                                        <div className="icon-e"><a href="#"><img src="../assets/smily.svg" alt="smily ..."/></a></div>
+                                        <div className="icon-e"><img src="../assets/img.svg" alt="img ..."/></div>
+                                        <div className="icon-e"><img src="../assets/gif.svg" alt="gif ..."/></div>
+                                        <div className="icon-e"><img src="../assets/doc.svg" alt="doc ..."/></div>
+                                        <div className="icon-e"><img src="../assets/smily.svg" alt="smily ..."/></div>
                                     </div>
                                 </div>
                                 <div>

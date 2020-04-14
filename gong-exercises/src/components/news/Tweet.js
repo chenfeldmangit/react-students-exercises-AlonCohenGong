@@ -2,7 +2,7 @@ import React from 'react';
 
 function Tweet (props) {
     return (
-        <div className="feed-item" key={props.key} id={props.id}>
+        <div className="feed-item" key={props.id} id={props.id}>
             <div className="img-col">
                 <a href="#"><img id="img-col-img" src={props.profileImgSrc} alt="profile image"/></a>
             </div>

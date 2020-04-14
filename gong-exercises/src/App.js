@@ -21,7 +21,7 @@ class App extends Component {
 
     }
     onNavClickHandler = (navId) => {
-        console.log('Profile click')
+        console.log('Profile click');
         this.setState((state)=>({
             profileDisplay: navId==='profile'? true : false,
         }));
@@ -52,7 +52,7 @@ class App extends Component {
                            <Route path="/News" component={()=><News tweetsSearchTerm={this.state.tweetsSearchTerm} />}/>
                            <Route path="/Notifications" component={()=><NotificationsConintainer />}/>
                            <Route path="/Profile" component={()=> <Profile profile={this.state.profile} onProfileUpdateHanler={this.onProfileUpdateHanler} /> }/>
-                           <Route component={()=><div> Page Not Found </div>}/>
+                           <Route component={()=><div><h1> Page Not Found </h1></div>}/>
                        </Switch>
                     </BrowserRouter>
                     <Trends onSearchClickHandler={this.onSearchClickHandler}/>

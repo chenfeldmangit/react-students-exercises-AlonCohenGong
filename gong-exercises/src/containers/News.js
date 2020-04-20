@@ -33,8 +33,6 @@ function News (props) {
         const tmpNewsItems = newsItems.map((item)=> (item.id==key ? {...item, 'liked': !item.liked} : item ));
         //setNewsItems(DbApi.updateNewsTweets([...tmpNewsItems]));
         setData([...tmpNewsItems]);
-
-
     };
     const onDeleteClickHandler = (key) => {
         console.log('onLikeClickHandler' , key);

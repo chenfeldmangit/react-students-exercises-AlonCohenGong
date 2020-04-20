@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import {connect} from 'react-redux';
 import useFetchFromLocalStore from '../data/useFetchFromLocalStore';
 import Throbber from '../UI/Throbber';
 import Modal from '../UI/Modal';
+import * as tweetsActions from '../actions/tweetsActions';
 import DbApi from "../data/DbApi";
 //import {tweete} from '../JSON/tweets';
 import Tweet from '../components/news/Tweet';
@@ -10,18 +12,28 @@ import '../css/news.css';
 
 function News (props) {
     const dataKey = 'NEWS-TWEETS';
-    //const [throbber, setThrobber] = useState(false);
     const [tweetText, setTweetText] = useState('');
-    //const [newsItems, setNewsItems] = useState([]);
+    /*
     const [data, setData, throbber] = useFetchFromLocalStore(dataKey, [], false);
-
     let newsItems = [...data]; //useFetchFromLocalStore(dataKey, []);
+*/
+    useEffect( ()=>{
+        const getAllTweetsFromDb = async ()=>{
+            const dataFromDb = await DbApi.getDataByKey(dataKey);
+            //props.dispatch(tweetsActions.setTweetsSucess(dataFromDb));
+            props.onTweetsInit(dataFromDb);
+        };
+        props.onTweetsInitStart();
+        getAllTweetsFromDb();
+    },[]);
 
+/*
     const onLikeClickHandler = (key) => {
         console.log('onLikeClickHandler' , key);
         const tmpNewsItems = newsItems.map((item)=> (item.id==key ? {...item, 'liked': !item.liked} : item ));
         //setNewsItems(DbApi.updateNewsTweets([...tmpNewsItems]));
         setData([...tmpNewsItems]);
+
 
     };
     const onDeleteClickHandler = (key) => {
@@ -31,6 +43,7 @@ function News (props) {
         //setNewsItems(DbApi.updateNewsTweets([...tmpNewsItems]));
         setData([...tmpNewsItems]);
     };
+*/
     const onTweetClickHandler = (key) => {
         //setThrobber(true);
         const newTweet =  {
@@ -44,23 +57,24 @@ function News (props) {
             text: tweetText,
         };
         setTimeout(()=>{
-            //setThrobber(false);
             setTweetText('');
-            //setNewsItems([newTweet, ...newsItems]);
             //setNewsItems(DbApi.updateNewsTweets([newTweet, ...newsItems]));
-            setData([newTweet, ...newsItems]);
+            //setData([newTweet, ...newsItems]);
+            props.onNewTweetClick(newTweet);
+            DbApi.addNewTweetToDB(newTweet);
         }, 2000);
     };
 
+    const {loading, tweetsList} = props.tweets;
     const {tweetsSearchTerm} = props;
-    const tweetItemsFiltered = tweetsSearchTerm.length ? newsItems.filter(item => item.text.indexOf(tweetsSearchTerm) >= 0) : newsItems;
-    console.log('news', tweetItemsFiltered);
+    const tweetItemsFiltered = tweetsSearchTerm.length ? tweetsList.filter(item => item.text.indexOf(tweetsSearchTerm) >= 0) : tweetsList;
+    //console.log('news', tweetItemsFiltered);
     const tweetItems = tweetItemsFiltered?.map((item)=>{
         return (
                 <Tweet key={item.id}
                        profileImgSrc={item.img}
-                       likeHandler={onLikeClickHandler}
-                       onDeleteClickHandler={onDeleteClickHandler}
+                       likeHandler={props.onLikeClick}
+                       onDeleteClickHandler={props.onDeleteClick}
                        name={item.name} 
                        more={item.from} 
                        when={item.when}
@@ -70,7 +84,7 @@ function News (props) {
         )});
         return (
             <>
-                {throbber && <Modal><Throbber/></Modal>}
+                {props.tweets.loading && <Modal><Throbber/></Modal>}
                 <div className="news-feed-wrapper">
                     <div className="header">
                         <div className="header-text">Home</div>
@@ -120,4 +134,35 @@ function News (props) {
         );
 };
 
-export default News;
+
+const mapStateToProps = (state)=>{
+    console.log('mapStateToProps sssssssssssss', state);
+    return {
+        tweets: state.tweets,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+   onTweetsInitStart: () => dispatch(tweetsActions.setTweetsStart()),
+   onTweetsInit: tweetsList => {
+       dispatch(tweetsActions.setTweetsStart());
+       dispatch(tweetsActions.setTweetsSucess(tweetsList));
+   },
+   onLikeClick: key => {
+       dispatch(tweetsActions.tweetLikeClicked(key));
+       DbApi.addTweetLikeToDB(key);
+
+   },
+   onDeleteClick: key => {
+       dispatch(tweetsActions.tweetDeleteClicked(key));
+       DbApi.deleteTweetFromDB(key);
+
+   },
+    onNewTweetClick: key => {
+       dispatch(tweetsActions.newTweetClicked(key));
+
+   },
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(News);

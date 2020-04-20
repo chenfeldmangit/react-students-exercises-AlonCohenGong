@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import {connect} from 'react-redux';
 import Throbber from '../UI/Throbber';
 import Modal from '../UI/Modal';
 import DbApi from "../data/DbApi";
 
-export default function useFetchFromLocalStore (key, initialData, throbberInit) {
+function useFetchFromLocalStore (key, initialData, throbberInit) {
     const [data, setData] = useState(initialData);
     const [throbber, setThrobber] = useState(throbberInit);
 
@@ -13,6 +14,11 @@ export default function useFetchFromLocalStore (key, initialData, throbberInit) 
         try{
             const dataFromDb = await DbApi.getDataByKey(key);
             setData(dataFromDb);
+
+            if(dataFromDb.length){
+                console.log('dataFromDbbbbbbbbbbbbbbbb', dataFromDb);
+
+            }
             setThrobber(false);
             console.log('useFetchFromLocalStore getData end', key);
         }catch(err){
@@ -42,3 +48,9 @@ export default function useFetchFromLocalStore (key, initialData, throbberInit) 
 
     return [data, setData, throbber];
 }
+
+
+
+
+export default useFetchFromLocalStore;
+//export default connect(mapStateToProps)(useFetchFromLocalStore);

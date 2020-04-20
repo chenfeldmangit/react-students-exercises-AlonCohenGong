@@ -7,6 +7,15 @@ BODY {
     border: 1px solid $grey-border-color;
 }
 
+.header{
+    display: flex;
+    justify-content: space-between;
+
+    .login {
+        padding: 20px 50px;
+    }
+}
+
 .main {    
     width: 80em;
     max-width: 1300px;

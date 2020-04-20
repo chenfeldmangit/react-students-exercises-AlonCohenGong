@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import { createStore, combineReducers} from 'redux';
+//import rootReducer from './reducers/appReducer';
+import appReducer from './reducers/appReducer';
+import tweetsReducer from './reducers/tweetsReducer'
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//const store = createStore(appReducer);
+const rootReducer = combineReducers({
+    appLogin: appReducer,
+    tweets: tweetsReducer,
+});
+
+const store = createStore(rootReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

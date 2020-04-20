@@ -6,6 +6,13 @@ class LocalStore {
             console.log('putData error: ' ,err);
         }
     }
+    static removeData (key) {
+        try {
+            localStorage.removeItem(key);
+        } catch(err) {
+            console.log('removeData error: ' ,err);
+        }
+    }
     static fetchDataFromStore (key, initialData) {
         try{
             const data = JSON.parse(localStorage.getItem(key));

@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+
 import NavItem from '../components/navigation/NavItem';
 import '../css/nav.css';
 
 class Navigation extends Component{
 
     render () {
+        const navItems = this.props.navItems?.map((item)=>{
+            return <NavItem link={item.link} caption={item.caption} imgName={item.img} onNavClick={()=>this.props.onNavClick(item.event)} badge={item.badge} />;
+        });
         return (
             <div className="naviation-wrapper">
                     <div className="header">
@@ -12,12 +16,13 @@ class Navigation extends Component{
                     </div>
                     <div className="navigation">
                         <nav className="nav-item-element">
-                            <NavItem link="News" caption="Home" imgName="home.svg" onNavClick={()=>this.props.onNavClick('home')}/>
+                            {navItems}
+                            {/*<NavItem link="News" caption="Home" imgName="home.svg" onNavClick={()=>this.props.onNavClick('home')}/>
                             <NavItem link="Explore" caption="Explore" imgName="explore.svg"/>
-                            <NavItem link="Notifications"caption="Notification" imgName="notification.svg"/>
+                            <NavItem link="Notifications"caption="Notification" imgName="notification.svg" badge={this.props.badge}/>
                             <NavItem link="Messages" caption="Messages" imgName="messages.svg"/>
                             <NavItem link="Profile" caption="Profile" imgName="explore.svg" onNavClick={()=>this.props.onNavClick('profile')}/>
-                            <NavItem link="Bookmarks" caption="Bookmarks" imgName="bookmarks.svg"/>
+                            <NavItem link="Bookmarks" caption="Bookmarks" imgName="bookmarks.svg"/>*/}
                             <br/><br/>
                         
                             <div className="nav-bottom">

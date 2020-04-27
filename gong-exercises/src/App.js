@@ -15,6 +15,16 @@ import './css/main.css';
 import './App.css';
 import Modal from "./UI/Modal";
 
+let navItems = [
+    {link: 'News', caption: 'Home', img: 'home.svg', event: 'home'},
+    {link: 'Explore', caption: 'Explore', img: 'explore.svg', event: 'home'},
+    {link: 'Notifications', caption: 'Notification', img: 'notification.svg', event: 'home'},
+    {link: 'Messages', caption: 'Messages', img: 'messages.svg', event: 'home'},
+    {link: 'Profile', caption: 'Profile', img: 'explore.svg', event: 'profile'},
+    {link: 'Bookmarks', caption: 'Bookmarks', img: 'bookmarks.svg', event: 'home'}
+];
+
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -45,6 +55,7 @@ class App extends Component {
         });
 
     }
+
 
     onNavClickHandler = (navId) => {
         console.log('Profile click');
@@ -93,7 +104,11 @@ class App extends Component {
 
 
     render() {
-        console.log('xxxxxxxxxxx App .js props', this.props);
+        const likesCount = this.props.tweets.tweetsList.reduce((total, tweet)=>(total + (+!!tweet.liked)),0);
+        navItems = navItems.map((item) => (item.link === 'Notifications' /*&& this.props.tweets.tweetsList*/
+            ? {...item, badge: likesCount} :
+            item));
+
         return (
             <>
                 {this.state.loadLogin
@@ -110,21 +125,34 @@ class App extends Component {
             </div>
             <div className="App main">
                 <div className="main">
+
                     <BrowserRouter>
-                        <Navigation onNavClick={this.onNavClickHandler} />
+                        <Navigation onNavClick={this.onNavClickHandler} navItems={navItems} />
+
                         {this.props.login?.loggedIn
-                        ?
-                        <Switch>
-                            <Route path="/" component={() => <News tweetsSearchTerm={this.state.tweetsSearchTerm}/>}
-                                   exact/>
-                            <Route path="/News"
-                                   component={() => <News tweetsSearchTerm={this.state.tweetsSearchTerm}/>}/>
+                        ?(<Switch>
+                            <Route path="/" exact >
+                                <News tweetsSearchTerm={this.state.tweetsSearchTerm}/>
+                            </Route>
+                            <Route path="/News" exact >
+                                <News tweetsSearchTerm={this.state.tweetsSearchTerm}/>
+                            </Route>
                             <Route path="/Notifications" component={() => <NotificationsConintainer/>}/>
                             <Route path="/Profile" component={() => <Profile profile={this.state.profile}
                                                                              onProfileUpdateHanler={this.onProfileUpdateHanler}/>}/>
                             <Route component={() => <div><h1> Page Not Found </h1></div>}/>
-                        </Switch>
-                        : <div> YOU ARE NOT LOGGED IN <br /> pLEASE CLICK "Log In"</div>}
+                        </Switch>)
+                        : (<div> YOU ARE NOT LOGGED IN <br /> pLEASE CLICK "Log In"</div>)}
+
+
+{/* this row causing the news to re-build again -- infinite loop
+   <Route path="/" component={() => <News tweetsSearchTerm={this.state.tweetsSearchTerm}/>}
+   exact/>
+
+<Route path="/News"
+   component={() => <News tweetsSearchTerm={this.state.tweetsSearchTerm}/>} exact/>
+*/}
+
                     </BrowserRouter>
                     <Trends onSearchClickHandler={this.onSearchClickHandler}/>
 
@@ -138,10 +166,11 @@ class App extends Component {
     }
 }
 
+
 const mapStateToProps = (state)=>{
-    console.log('mapStateToProps sssssssssssss', state);
     return {
         login: state.appLogin.login,
+        tweets: state.tweets,
     };
 };
 export default connect(mapStateToProps)(App);

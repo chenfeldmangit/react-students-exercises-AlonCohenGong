@@ -13,35 +13,12 @@ import '../css/news.css';
 function News (props) {
     const dataKey = 'NEWS-TWEETS';
     const [tweetText, setTweetText] = useState('');
-    /*
-    const [data, setData, throbber] = useFetchFromLocalStore(dataKey, [], false);
-    let newsItems = [...data]; //useFetchFromLocalStore(dataKey, []);
-*/
+
     useEffect( ()=>{
-        const getAllTweetsFromDb = async ()=>{
-            const dataFromDb = await DbApi.getDataByKey(dataKey);
-            //props.dispatch(tweetsActions.setTweetsSucess(dataFromDb));
-            props.onTweetsInit(dataFromDb);
-        };
-        props.onTweetsInitStart();
-        getAllTweetsFromDb();
+
+        props.onTweetsInit(dataKey);
     },[]);
 
-/*
-    const onLikeClickHandler = (key) => {
-        console.log('onLikeClickHandler' , key);
-        const tmpNewsItems = newsItems.map((item)=> (item.id==key ? {...item, 'liked': !item.liked} : item ));
-        //setNewsItems(DbApi.updateNewsTweets([...tmpNewsItems]));
-        setData([...tmpNewsItems]);
-    };
-    const onDeleteClickHandler = (key) => {
-        console.log('onLikeClickHandler' , key);
-        const tmpNewsItems = newsItems.filter((item)=> item.id != key);
-        console.log('onLikeClickHandler' , tmpNewsItems);
-        //setNewsItems(DbApi.updateNewsTweets([...tmpNewsItems]));
-        setData([...tmpNewsItems]);
-    };
-*/
     const onTweetClickHandler = (key) => {
         //setThrobber(true);
         const newTweet =  {
@@ -60,12 +37,13 @@ function News (props) {
             //setData([newTweet, ...newsItems]);
             props.onNewTweetClick(newTweet);
             DbApi.addNewTweetToDB(newTweet);
-        }, 2000);
+        }, 1000);
     };
 
     const {loading, tweetsList} = props.tweets;
+    console.log('Tweet List : ' , tweetsList);
     const {tweetsSearchTerm} = props;
-    const tweetItemsFiltered = tweetsSearchTerm.length ? tweetsList.filter(item => item.text.indexOf(tweetsSearchTerm) >= 0) : tweetsList;
+    const tweetItemsFiltered = tweetsSearchTerm.length ? tweetsList.filter(item => item.text.indexOf(tweetsSearchTerm) >= 0) : (tweetsList? tweetsList: []);
     //console.log('news', tweetItemsFiltered);
     const tweetItems = tweetItemsFiltered?.map((item)=>{
         return (
@@ -134,21 +112,21 @@ function News (props) {
 
 
 const mapStateToProps = (state)=>{
-    console.log('mapStateToProps sssssssssssss', state);
     return {
         tweets: state.tweets,
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-   onTweetsInitStart: () => dispatch(tweetsActions.setTweetsStart()),
-   onTweetsInit: tweetsList => {
+   onTweetsInit: (dataKey) => dispatch(tweetsActions.setTweets(dataKey)),
+   //onTweetsInitStart: () => dispatch(tweetsActions.setTweetsStart()),
+   /*onTweetsInit: tweetsList => {
        dispatch(tweetsActions.setTweetsStart());
        dispatch(tweetsActions.setTweetsSucess(tweetsList));
-   },
+   },*/
    onLikeClick: key => {
        dispatch(tweetsActions.tweetLikeClicked(key));
-       DbApi.addTweetLikeToDB(key);
+       //DbApi.addTweetLikeToDB(key);
 
    },
    onDeleteClick: key => {

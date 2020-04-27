@@ -8,14 +8,14 @@ const initialState = {
 
 let tweetsReducer = function(state = initialState, action) {
     switch(action.type) {
+       /* case (actions.LOAD_TWEETS):
+            return state;*/
         case (actions.LOAD_TWEETS_START):
-            console.log('XXXXXXXXXX tweets REDUCER LOAD Start');
             return {
                 ...state,
                 loading: true,
             }
         case (actions.LOAD_TWEETS_SUCESS):
-            console.log('XXXXXXXXXX tweets REDUCER LOAD Sucess' , action.payload);
             return {
                 ...state,
                 tweetsList: action.payload.tweets,
@@ -28,7 +28,14 @@ let tweetsReducer = function(state = initialState, action) {
                 error: 'fail To Load Tweets',
                 loading: false,
             }
-        case (actions.TWEET_LIKE_CLICKED):
+        case (actions.TWEET_LIKE):
+            return {...state};
+        case (actions.TWEET_LIKE_START):
+            return {
+                ...state,
+                loading: true,
+            };
+        case (actions.TWEET_LIKE_SUCESS):
             const {key} = action.payload;
             const tmpNewsItems = state.tweetsList.map((item)=> (item.id==key ? {...item, 'liked': !item.liked} : item ));
             return {
@@ -36,6 +43,12 @@ let tweetsReducer = function(state = initialState, action) {
                 tweetsList: [...tmpNewsItems],
                 loading: false,
             };
+        case (actions.TWEET_LIKE_FAIL):
+            return {
+                ...state,
+                loading: false,
+            };
+
         case (actions.TWEET_DELETE_CLICKED):
             let tmpNewsItems2 = state.tweetsList.filter((item)=> item.id != action.payload.key);
 

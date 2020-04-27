@@ -69,7 +69,7 @@ class DbApi {
         console.log('onLikeClickHandler' , key);
         DbApi.getNewsTweets()
             .then((newsItems)=>{
-                console.log('DB set key newsItems', key, newsItems);
+                //console.log('DB set key newsItems', key, newsItems);
                 const tmpNewsItems = newsItems.map((item)=> (item.id==key ? {...item, 'liked': !item.liked} : item ));
                 //setNewsItems(DbApi.updateNewsTweets([...tmpNewsItems]));
                 DbApi.updateNewsTweets(tmpNewsItems);
